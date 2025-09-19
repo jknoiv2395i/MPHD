@@ -112,7 +112,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 80px;
-  min-height: calc(100vh - 79px);
+  min-height: max(933px, calc(100vh - 79px));
 }
 
 .hero-content {
