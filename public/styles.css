@@ -51,12 +51,9 @@ body {
   flex-shrink: 0;
 }
 
-.logo-text {
-  font-family: 'Instrument Sans', sans-serif;
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--text-primary);
-}
+.brand-link{display:inline-flex;align-items:center;text-decoration:none}
+.brand-logo{height:28px;width:auto;display:block}
+@media (min-width:768px){.brand-logo{height:34px}}
 
 .main-nav {
   display: flex;
