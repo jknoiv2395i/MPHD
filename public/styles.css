@@ -45,7 +45,7 @@ body {
   align-items: center;
   justify-content: space-between;
   height: 79px;
-  background: #fff;
+  background: transparent;
 }
 
 .logo-section {
@@ -62,7 +62,7 @@ body {
 }
 
 .nav-link {
-  color: rgba(17, 24, 39, 0.8);
+  color: var(--text-muted);
   text-decoration: none;
   font-size: 15px;
   font-weight: 400;
@@ -70,7 +70,7 @@ body {
 }
 
 .nav-link:hover {
-  color: #111827;
+  color: var(--text-primary);
 }
 
 .contact-button {
