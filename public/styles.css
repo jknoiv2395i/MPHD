@@ -32,7 +32,7 @@ body {
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.8);
+  background: transparent;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -101,6 +101,7 @@ body {
   align-items: center;
   position: relative;
   padding-top: 79px;
+  background: url("https://cdn.builder.io/api/v1/image/assets%2F4a6014b4768048a0b283ecc7c1986908%2F8a3970f6b7ff420597d7cdae5a16f6ea") center/cover no-repeat;
 }
 
 .hero-container {
@@ -112,7 +113,6 @@ body {
   align-items: center;
   gap: 80px;
   min-height: calc(100vh - 79px);
-  background: url("https://cdn.builder.io/api/v1/image/assets%2F4a6014b4768048a0b283ecc7c1986908%2F8a3970f6b7ff420597d7cdae5a16f6ea") center/cover no-repeat;
 }
 
 .hero-content {
