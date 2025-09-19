@@ -1,1 +1,1 @@
-const btn=document.getElementById('actionBtn');const status=document.getElementById('status');btn.addEventListener('click',()=>{const t=new Date().toLocaleTimeString();status.textContent=`Button clicked at ${t}`;});
+// Real estate landing page - no interactive scripts needed yet
