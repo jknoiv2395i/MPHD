@@ -421,8 +421,6 @@ body {
 }
 
 .blog-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .featured-blog {
@@ -454,7 +452,7 @@ body {
   transition: transform 0.3s ease;
 }
 
-.blog-card:hover .blog-image {
+.blog-image:hover {
   transform: scale(1.05);
 }
 
