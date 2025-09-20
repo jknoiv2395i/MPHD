@@ -195,6 +195,18 @@ body {
   pointer-events: none;
 }
 
+/* Logo Marquee */
+.logo-strip{background:#fff;padding:16px 0;overflow:hidden}
+.marquee{width:100%;overflow:hidden}
+.marquee-track{display:flex;align-items:center;gap:40px;width:max-content;animation:marquee-left 30s linear infinite;will-change:transform}
+.logo-img{display:block;object-fit:contain;opacity:.9;transition:opacity .2s ease}
+.logo-img:hover{opacity:1}
+.logo-h36{height:36px}
+.logo-h40{height:40px}
+.logo-h44{height:44px}
+.logo-h48{height:48px}
+@keyframes marquee-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
   .header-container {
