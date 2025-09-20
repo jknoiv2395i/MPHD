@@ -252,14 +252,22 @@ body {
   .header-container {
     padding: 16px 48px;
   }
-  
+
   .hero-container {
     padding: 0 48px;
     gap: 40px;
   }
-  
+
   .hero-title {
     font-size: 56px;
+  }
+
+  .about-section {
+    padding: 80px 0;
+  }
+
+  .about-title {
+    font-size: 48px;
   }
 }
 
@@ -280,6 +288,19 @@ body {
 
   .hero-title {
     font-size: 48px;
+  }
+
+  .about-section {
+    padding: 60px 0;
+  }
+
+  .about-title {
+    font-size: 40px;
+    letter-spacing: -1.2px;
+  }
+
+  .about-subtitle {
+    font-size: 16px;
   }
 }
 
@@ -317,30 +338,45 @@ body {
   .header-container {
     padding: 12px 16px;
   }
-  
+
   .hero-container {
     padding: 20px 16px;
   }
-  
+
   .hero-title {
     font-size: 28px;
     line-height: 1.2;
   }
-  
+
   .hero-subtitle {
     font-size: 14px;
   }
-  
+
   .main-nav {
     gap: 16px;
   }
-  
+
   .nav-link {
     font-size: 14px;
   }
-  
+
   .property-image {
     width: 160px;
     height: 160px;
+  }
+
+  .about-section {
+    padding: 40px 0;
+  }
+
+  .about-title {
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+  }
+
+  .about-subtitle {
+    font-size: 15px;
+    line-height: 1.6;
   }
 }
