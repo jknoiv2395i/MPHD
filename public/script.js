@@ -8,18 +8,38 @@
       const editorFlags = ['builder', 'builder.edit', 'editor', 'editMode', '_edit'];
       for (const f of editorFlags) if (params.has(f)) return true;
 
+      // Check hash and pathname for editor hints
+      if (window.location.hash && /builder|editor/.test(window.location.hash)) return true;
+      if (window.location.pathname && /builder|editor/.test(window.location.pathname)) return true;
+
       // Session storage toggle (manual/legacy)
       if (sessionStorage.getItem('edit-mode') === '1') return true;
 
+      // Global flags that some editors/platforms expose
+      try {
+        if (window.__BUILDER__ || window.builder || window.Builder) return true;
+      } catch (e) {}
+
       // If loaded inside an editor iframe, try to infer from referrer or parent location
       if (window.self !== window.top) {
+        // Prefer attempting to read parent location when same-origin
         try {
           const parentHref = window.parent.location && window.parent.location.href;
           if (parentHref && /builder|editor|localhos?t|localhost:\d+/.test(parentHref)) return true;
         } catch (e) {
-          // cross-origin access to parent may fail; fall back to referrer
+          // cross-origin access to parent may fail; fall back to other heuristics
         }
         if (document.referrer && /builder\.io|builder|editor/.test(document.referrer)) return true;
+
+        // Sometimes editor sets window.name or frame attributes
+        try {
+          if (window.name && /builder|editor/.test(window.name)) return true;
+          const frame = window.frameElement;
+          if (frame && frame.getAttribute) {
+            const attrs = (frame.getAttribute('id') || '') + ' ' + (frame.getAttribute('class') || '') + ' ' + (frame.getAttribute('data-testid') || '') + ' ' + (frame.getAttribute('data-builder') || '');
+            if (/builder|editor/.test(attrs)) return true;
+          }
+        } catch (e) {}
       }
 
       return false;
