@@ -936,3 +936,216 @@ body {
   .testimonials-container{padding:0 16px}
   .testimonial-quote{font-size:16px}
 }
+
+/* Consultation Section */
+.consultation-section {
+  position: relative;
+  height: 900px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #60A5FA 0%, #2563EB 100%);
+}
+
+.consultation-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.consultation-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.consultation-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #60A5FA 0%, #2563EB 100%);
+  mix-blend-mode: multiply;
+}
+
+.consultation-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 96px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.consultation-content {
+  max-width: 614px;
+}
+
+.consultation-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 87px;
+  font-weight: 400;
+  line-height: 96px;
+  letter-spacing: -2.4px;
+  color: #fff;
+  margin-bottom: 32px;
+}
+
+.consultation-description {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #fff;
+  margin-bottom: 40px;
+  max-width: 435px;
+}
+
+.consultation-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+  border-radius: 9999px;
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 28px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: fit-content;
+}
+
+.consultation-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.consultation-button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: #000;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.consultation-button-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Responsive Design for Consultation Section */
+@media (max-width: 1200px) {
+  .consultation-container {
+    padding: 0 48px;
+  }
+
+  .consultation-title {
+    font-size: 72px;
+    line-height: 80px;
+    letter-spacing: -2px;
+  }
+}
+
+@media (max-width: 968px) {
+  .consultation-section {
+    height: 700px;
+  }
+
+  .consultation-container {
+    padding: 0 24px;
+  }
+
+  .consultation-title {
+    font-size: 56px;
+    line-height: 64px;
+    letter-spacing: -1.6px;
+    margin-bottom: 24px;
+  }
+
+  .consultation-description {
+    font-size: 16px;
+    line-height: 26px;
+    margin-bottom: 32px;
+  }
+
+  .consultation-button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  .consultation-button-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .consultation-button-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .consultation-section {
+    height: 600px;
+  }
+
+  .consultation-title {
+    font-size: 44px;
+    line-height: 52px;
+    letter-spacing: -1.2px;
+  }
+
+  .consultation-description {
+    font-size: 15px;
+    line-height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .consultation-container {
+    padding: 0 16px;
+  }
+
+  .consultation-section {
+    height: 500px;
+  }
+
+  .consultation-title {
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+
+  .consultation-description {
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 28px;
+  }
+
+  .consultation-button {
+    font-size: 15px;
+    padding: 8px 16px;
+    gap: 8px;
+  }
+
+  .consultation-button-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .consultation-button-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+}
