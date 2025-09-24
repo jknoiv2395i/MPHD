@@ -62,7 +62,11 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     const wasActive = sessionStorage.getItem('visual-change-active') === '1';
-    if (!isEditMode() && !wasActive) return;
+    // show toolbar when any of:
+    // - edit mode detected
+    // - user previously activated visual-change
+    // - page is embedded in an iframe (common for editors)
+    if (!isEditMode() && !wasActive && window.self === window.top) return;
 
     injectStyles();
     createToolbar();
