@@ -2,7 +2,27 @@
   function isEditMode(){
     try {
       const params = new URLSearchParams(window.location.search || '');
-      return params.has('edit') || sessionStorage.getItem('edit-mode') === '1';
+
+      // Query param checks (common editor flags)
+      if (params.has('edit') || params.get('edit') === '1') return true;
+      const editorFlags = ['builder', 'builder.edit', 'editor', 'editMode', '_edit'];
+      for (const f of editorFlags) if (params.has(f)) return true;
+
+      // Session storage toggle (manual/legacy)
+      if (sessionStorage.getItem('edit-mode') === '1') return true;
+
+      // If loaded inside an editor iframe, try to infer from referrer or parent location
+      if (window.self !== window.top) {
+        try {
+          const parentHref = window.parent.location && window.parent.location.href;
+          if (parentHref && /builder|editor|localhos?t|localhost:\d+/.test(parentHref)) return true;
+        } catch (e) {
+          // cross-origin access to parent may fail; fall back to referrer
+        }
+        if (document.referrer && /builder\.io|builder|editor/.test(document.referrer)) return true;
+      }
+
+      return false;
     } catch (_) { return false; }
   }
 
