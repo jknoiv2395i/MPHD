@@ -1559,3 +1559,271 @@ body {
     height: 14px;
   }
 }
+
+/* FAQ Section */
+.faq-section {
+  background: #fff;
+  padding: 96px 0;
+}
+
+.faq-container {
+  max-width: 1568px;
+  margin: 0 auto;
+  padding: 0 352px 0 352px;
+}
+
+.faq-content {
+  display: grid;
+  grid-template-columns: 451px 1fr;
+  gap: 189px;
+  align-items: start;
+}
+
+.faq-header {
+  max-width: 451px;
+}
+
+.faq-title {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 60px;
+  letter-spacing: -1.5px;
+  color: #000;
+  margin-bottom: 40px;
+}
+
+.faq-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 29px;
+  color: #4B5563;
+  max-width: 428px;
+}
+
+.faq-list {
+  max-width: 576px;
+}
+
+.faq-item {
+  border-top: 2px solid #C3D5F1;
+  border-bottom: 1px solid #C3D5F1;
+}
+
+.faq-item-last {
+  border-bottom: 2px solid #C3D5F1;
+}
+
+.faq-question-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  min-height: 128px;
+  padding: 16px 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.faq-question-container:hover {
+  background-color: rgba(195, 213, 241, 0.1);
+}
+
+.faq-question {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: -0.675px;
+  color: #222;
+  margin: 0;
+  flex: 1;
+}
+
+.faq-expand-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: #131313;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faq-expand-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(19, 19, 19, 0.2);
+}
+
+.faq-expand-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* FAQ Responsive Design */
+@media (max-width: 1400px) {
+  .faq-container {
+    padding: 0 48px;
+  }
+
+  .faq-content {
+    grid-template-columns: 400px 1fr;
+    gap: 80px;
+  }
+
+  .faq-title {
+    font-size: 52px;
+    line-height: 56px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .faq-section {
+    padding: 80px 0;
+  }
+
+  .faq-container {
+    padding: 0 32px;
+  }
+
+  .faq-content {
+    grid-template-columns: 350px 1fr;
+    gap: 60px;
+  }
+
+  .faq-title {
+    font-size: 48px;
+    line-height: 52px;
+    margin-bottom: 32px;
+  }
+
+  .faq-question {
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -0.6px;
+  }
+}
+
+@media (max-width: 968px) {
+  .faq-section {
+    padding: 60px 0;
+  }
+
+  .faq-container {
+    padding: 0 24px;
+  }
+
+  .faq-content {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .faq-header {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .faq-title {
+    font-size: 40px;
+    line-height: 44px;
+    margin-bottom: 24px;
+  }
+
+  .faq-subtitle {
+    font-size: 16px;
+    line-height: 26px;
+    max-width: 100%;
+  }
+
+  .faq-list {
+    max-width: 100%;
+  }
+
+  .faq-question {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .faq-question-container {
+    min-height: 100px;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-section {
+    padding: 50px 0;
+  }
+
+  .faq-container {
+    padding: 0 16px;
+  }
+
+  .faq-title {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+  .faq-question {
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: -0.5px;
+  }
+
+  .faq-question-container {
+    min-height: 88px;
+    gap: 16px;
+  }
+
+  .faq-expand-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .faq-expand-button svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-section {
+    padding: 40px 0;
+  }
+
+  .faq-title {
+    font-size: 28px;
+    line-height: 32px;
+    letter-spacing: -1px;
+  }
+
+  .faq-subtitle {
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .faq-question {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .faq-question-container {
+    min-height: 80px;
+    gap: 12px;
+  }
+
+  .faq-expand-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .faq-expand-button svg {
+    width: 14px;
+    height: 14px;
+  }
+}
