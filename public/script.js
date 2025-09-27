@@ -100,8 +100,15 @@
   }
 
   function ensureToolbarVisible(){
-    // Re-create if removed by host environment
     try { createToolbar(); } catch (_) {}
+    try {
+      const hostDoc = getHostDocument();
+      const el = hostDoc.getElementById('visual-change-toolbar');
+      if (el) {
+        el.style.display = 'block';
+        el.style.pointerEvents = 'auto';
+      }
+    } catch (_) {}
   }
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -133,5 +140,19 @@
         clearInterval(interval);
       }
     }, 1500);
+
+    // Persistent watcher to re-add toolbar if removed or hidden
+    try {
+      const hostDoc = getHostDocument();
+      const observer = new MutationObserver(() => {
+        const el = hostDoc.getElementById('visual-change-toolbar');
+        if (!el) {
+          createToolbar();
+        } else if (getComputedStyle(el).display === 'none') {
+          el.style.display = 'block';
+        }
+      });
+      observer.observe(hostDoc.body || document.body, { childList: true, subtree: true });
+    } catch (_) {}
   });
 })();
