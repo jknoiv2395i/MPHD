@@ -1569,7 +1569,7 @@ body {
 .faq-container {
   max-width: 1568px;
   margin: 0 auto;
-  padding: 0 352px 0 352px;
+  padding: 0 144px 0 172px;
 }
 
 .faq-content {
@@ -1577,6 +1577,7 @@ body {
   grid-template-columns: 451px 1fr;
   gap: 189px;
   align-items: start;
+  margin-left: -5px;
 }
 
 .faq-header {
