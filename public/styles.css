@@ -381,6 +381,244 @@ body {
   }
 }
 
+/* Service Areas Section */
+.service-areas-section {
+  background: #fff;
+  padding: 96px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.service-areas-container {
+  width: 100%;
+  max-width: 1152px;
+  padding: 0 32px;
+  text-align: center;
+}
+
+.service-areas-title {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 40px;
+  color: #000;
+  margin: 0 0 24px 0;
+}
+
+.service-areas-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #4B5563;
+  margin: 0 0 64px 0;
+  max-width: 826px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service-areas-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  max-width: 100%;
+}
+
+.service-area-card {
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 17px 16px;
+  height: 102px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.service-area-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.1);
+  border-color: #2563EB;
+}
+
+.area-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+  flex-shrink: 0;
+}
+
+.area-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.area-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #020817;
+  margin: 0 0 2px 0;
+  text-align: center;
+}
+
+.area-service {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #6B7280;
+  margin: 0;
+  text-align: center;
+}
+
+/* Responsive Design for Service Areas */
+@media (max-width: 1200px) {
+  .service-areas-section {
+    padding: 80px 0;
+  }
+
+  .service-areas-container {
+    padding: 0 24px;
+  }
+
+  .service-areas-grid {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 968px) {
+  .service-areas-section {
+    padding: 60px 0;
+  }
+
+  .service-areas-title {
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  .service-areas-subtitle {
+    font-size: 16px;
+    margin-bottom: 48px;
+  }
+
+  .service-areas-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .service-areas-section {
+    padding: 50px 0;
+  }
+
+  .service-areas-title {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  .service-areas-subtitle {
+    font-size: 15px;
+    line-height: 24px;
+    margin-bottom: 40px;
+  }
+
+  .service-areas-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .service-area-card {
+    height: 96px;
+    padding: 14px 12px;
+  }
+
+  .area-name {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .area-service {
+    font-size: 10px;
+    line-height: 14px;
+  }
+}
+
+@media (max-width: 560px) {
+  .service-areas-section {
+    padding: 40px 0;
+  }
+
+  .service-areas-container {
+    padding: 0 16px;
+  }
+
+  .service-areas-title {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .service-areas-subtitle {
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 32px;
+  }
+
+  .service-areas-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .service-area-card {
+    height: 88px;
+    padding: 12px 8px;
+  }
+
+  .area-icon {
+    width: 18px;
+    height: 18px;
+    margin-bottom: 4px;
+  }
+
+  .area-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .area-name {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .area-service {
+    font-size: 9px;
+    line-height: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  .service-areas-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .service-area-card {
+    height: 80px;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+}
+
 /* Properties Section */
 .properties-section {
   background: #fff;
