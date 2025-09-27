@@ -46,25 +46,40 @@
     } catch (_) { return false; }
   }
 
+  function getHostDocument(){
+    try {
+      if (window.parent && window.parent !== window && window.parent.document) {
+        // same-origin only; will throw if not
+        void window.parent.document.body; // access to trigger potential security error
+        return window.parent.document;
+      }
+    } catch (_) {}
+    return document;
+  }
+
   function injectStyles(){
-    if (document.getElementById('visual-change-styles')) return;
+    const hostDoc = getHostDocument();
+    if (hostDoc.getElementById('visual-change-styles')) return;
     const css = `
-      .visual-change-toolbar{position:fixed;top:96px;right:16px;z-index:2147483647;pointer-events:auto}
-      .visual-change-button{display:inline-flex;align-items:center;justify-content:center;padding:9px 16px;background:var(--button-bg);color:var(--button-text);border-radius:9999px;border:1px solid rgba(0,0,0,0.08);font-family:'Inter',sans-serif;font-size:14px;font-weight:500;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.06);transition:transform .2s ease, box-shadow .2s ease}
+      .visual-change-toolbar{position:fixed !important;top:96px !important;right:16px !important;z-index:2147483647 !important;pointer-events:auto !important;display:block !important}
+      .visual-change-button{display:inline-flex !important;align-items:center;justify-content:center;padding:9px 16px;background:var(--button-bg);color:var(--button-text);border-radius:9999px;border:1px solid rgba(0,0,0,0.08);font-family:'Inter',sans-serif;font-size:14px;font-weight:500;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.06);transition:transform .2s ease, box-shadow .2s ease}
       .visual-change-button:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,0.08)}
       body.visual-change-on :where(h1,h2,h3,h4,h5,h6,p,a,section,div,article,figure,img,button){outline:1px dashed rgba(7,24,57,.6);outline-offset:2px;cursor:crosshair}
     `;
-    const style = document.createElement('style');
+    const style = hostDoc.createElement('style');
     style.id = 'visual-change-styles';
     style.textContent = css;
-    document.head.appendChild(style);
+    hostDoc.head.appendChild(style);
   }
 
   function createToolbar(){
-    const toolbar = document.createElement('div');
+    const hostDoc = getHostDocument();
+    if (hostDoc.getElementById('visual-change-toolbar')) return;
+    const toolbar = hostDoc.createElement('div');
     toolbar.className = 'visual-change-toolbar';
+    toolbar.id = 'visual-change-toolbar';
 
-    const btn = document.createElement('button');
+    const btn = hostDoc.createElement('button');
     btn.type = 'button';
     btn.className = 'visual-change-button';
     btn.setAttribute('aria-label', 'Visual changes');
@@ -77,20 +92,28 @@
     });
 
     toolbar.appendChild(btn);
-    document.body.appendChild(toolbar);
+    try {
+      hostDoc.body.appendChild(toolbar);
+    } catch (_) {
+      document.body.appendChild(toolbar);
+    }
+  }
+
+  function ensureToolbarVisible(){
+    // Re-create if removed by host environment
+    try { createToolbar(); } catch (_) {}
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     const wasActive = sessionStorage.getItem('visual-change-active') === '1';
-    // show toolbar when any of:
-    // - edit mode detected
-    // - user previously activated visual-change
-    // - page is embedded in an iframe (common for editors)
 
     injectStyles();
     createToolbar();
 
-    if (wasActive) document.body.classList.add('visual-change-on');
+    if (wasActive || isEditMode()) {
+      document.body.classList.add('visual-change-on');
+      sessionStorage.setItem('visual-change-active', '1');
+    }
 
     window.addEventListener('keydown', (e) => {
       if ((e.key === 'e' || e.key === 'E') && (e.ctrlKey || e.metaKey)) {
@@ -100,5 +123,15 @@
         sessionStorage.setItem('visual-change-active', on ? '1' : '0');
       }
     });
+
+    // Guard against environments that remove dynamically inserted nodes
+    let checks = 0;
+    const interval = setInterval(() => {
+      checks++;
+      ensureToolbarVisible();
+      if (getHostDocument().getElementById('visual-change-toolbar') || checks > 20) {
+        clearInterval(interval);
+      }
+    }, 1500);
   });
 })();
