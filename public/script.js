@@ -49,7 +49,7 @@
   function injectStyles(){
     if (document.getElementById('visual-change-styles')) return;
     const css = `
-      .visual-change-toolbar{position:fixed;top:96px;right:16px;z-index:1000;pointer-events:auto}
+      .visual-change-toolbar{position:fixed;top:96px;right:16px;z-index:2147483647;pointer-events:auto}
       .visual-change-button{display:inline-flex;align-items:center;justify-content:center;padding:9px 16px;background:var(--button-bg);color:var(--button-text);border-radius:9999px;border:1px solid rgba(0,0,0,0.08);font-family:'Inter',sans-serif;font-size:14px;font-weight:500;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.06);transition:transform .2s ease, box-shadow .2s ease}
       .visual-change-button:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,0.08)}
       body.visual-change-on :where(h1,h2,h3,h4,h5,h6,p,a,section,div,article,figure,img,button){outline:1px dashed rgba(7,24,57,.6);outline-offset:2px;cursor:crosshair}
@@ -86,7 +86,6 @@
     // - edit mode detected
     // - user previously activated visual-change
     // - page is embedded in an iframe (common for editors)
-    if (!isEditMode() && !wasActive && window.self === window.top) return;
 
     injectStyles();
     createToolbar();
