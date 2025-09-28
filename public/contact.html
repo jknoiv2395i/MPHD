@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact Us - Shreenidhee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/contact-styles.css" />
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-container">
+        <div class="logo-section">
+          <a href="/" aria-label="Shreenidhee Home" class="brand-link">
+            <img src="https://cdn.builder.io/api/v1/image/assets%2F4a6014b4768048a0b283ecc7c1986908%2F9b76114b8656456a9e2d301d42d9967a" alt="Shreenidhee logo" class="brand-logo" loading="eager" decoding="async" />
+          </a>
+        </div>
+        <nav class="main-nav">
+          <a href="/" class="nav-link">Home</a>
+          <a href="#" class="nav-link">Properties</a>
+          <a href="/about.html" class="nav-link">About</a>
+          <a href="/contact.html" class="nav-link nav-link-active">Contact us</a>
+        </nav>
+        <a href="/contact.html" class="contact-button">Contact us</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="contact-hero-section" aria-label="Hero">
+        <div class="contact-hero-image">
+          <img class="contact-hero-bg" src="https://api.builder.io/api/v1/image/assets/TEMP/e8013bbbc820f05a3f48efd4964535ee8fadc977?width=3810" alt="Modern architectural building" />
+        </div>
+      </section>
+
+      <!-- Contact Content -->
+      <section class="contact-section">
+        <div class="contact-container">
+          <div class="contact-card" role="form" aria-labelledby="contact-title">
+            <div class="contact-header">
+              <h1 id="contact-title" class="contact-title">Contact us</h1>
+              <p class="contact-subtitle">Share your vision with us.</p>
+            </div>
+
+            <form class="contact-form" id="contact-form" novalidate>
+              <div class="form-group">
+                <label for="fullName" class="label">Full name *</label>
+                <div style="margin-top:12px">
+                  <input id="fullName" name="fullName" class="input" placeholder="Enter your full name" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="phone" class="label">Phone number *</label>
+                <div style="margin-top:12px; position: relative;">
+                  <input id="phone" name="phone" type="tel" class="input" placeholder="Enter phone number (e.g., 9876543210)" inputmode="tel" required />
+                  <span class="input-hint-right">10+ digits</span>
+                </div>
+                <p class="helper-text">Enter 10 digits for Indian numbers or include country code for international</p>
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="label">Email address *</label>
+                <div style="margin-top:12px">
+                  <input id="email" name="email" type="email" class="input" placeholder="Enter your email address" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="projectInfo" class="label">Project information</label>
+                <div style="margin-top:12px; position: relative;">
+                  <textarea id="projectInfo" name="projectInfo" class="textarea" maxlength="1000" placeholder="Tell us about your project requirements, timeline, budget, or any specific needs..."></textarea>
+                  <span id="projectInfo-count" class="input-hint-right" style="top:auto; bottom:12px; transform:none;">0/1000</span>
+                </div>
+                <p class="helper-text">Optional: Provide details about your requirements to help us serve you better</p>
+              </div>
+
+              <div class="contact-submit">
+                <button type="submit" class="contact-submit-button">Submit Contact Form</button>
+                <p class="contact-note">* Required fields. We'll respond within 24 hours during business days.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div class="footer-brand-logo">
+              <img src="https://api.builder.io/api/v1/image/assets/TEMP/b1605a248de5b790fdb54ac5cea889339558b823?width=750" alt="Shreenidhee logo" class="footer-logo" loading="lazy" />
+            </div>
+            <p class="footer-brand-description">Bring your architectural projects to life with a template that puts your work front and center.</p>
+          </div>
+
+          <div class="footer-navigation">
+            <div class="footer-nav-column">
+              <h4 class="footer-nav-heading">Company</h4>
+              <ul class="footer-nav-list">
+                <li><a href="/" class="footer-nav-link">Home</a></li>
+                <li><a href="/about.html" class="footer-nav-link">About</a></li>
+                <li><a href="/contact.html" class="footer-nav-link">Contact</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-nav-column">
+              <h4 class="footer-nav-heading">Services</h4>
+              <ul class="footer-nav-list">
+                <li><a href="#" class="footer-nav-link">Services</a></li>
+                <li><a href="#" class="footer-nav-link">Projects</a></li>
+                <li><a href="#" class="footer-nav-link">Industrial</a></li>
+                <li><a href="#" class="footer-nav-link">Landing</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-nav-column">
+              <h4 class="footer-nav-heading">Properties</h4>
+              <ul class="footer-nav-list">
+                <li><a href="#" class="footer-nav-link">All Properties</a></li>
+                <li><a href="#" class="footer-nav-link">Residential</a></li>
+                <li><a href="#" class="footer-nav-link">Commercial</a></li>
+                <li><a href="#" class="footer-nav-link">Residential Rentals</a></li>
+                <li><a href="#" class="footer-nav-link">Commercial Rentals</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-nav-column">
+              <h4 class="footer-nav-heading">Local Pages</h4>
+              <ul class="footer-nav-list">
+                <li><a href="#" class="footer-nav-link">Service Areas</a></li>
+                <li><a href="#" class="footer-nav-link">Residential Nagpur 440008</a></li>
+                <li><a href="#" class="footer-nav-link">Commercial Nagpur 440008</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-contact">
+            <div class="contact-item">
+              <h4 class="contact-heading">Office Address</h4>
+              <p class="contact-text">Bhandara Road, Behind Jk Tower, Small Factory Area Bagadgangj<br>Nagper Maharashtra-2440008</p>
+            </div>
+
+            <div class="contact-item">
+              <h4 class="contact-heading">Phone Number</h4>
+              <p class="contact-text">office: 7387777085<br>Mobile:-7387777686/8275046765</p>
+            </div>
+
+            <div class="contact-item">
+              <h4 class="contact-heading">Email</h4>
+              <p class="contact-text">EMAIL :- info@mphdgroup.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
