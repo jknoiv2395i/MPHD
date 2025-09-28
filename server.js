@@ -22,9 +22,17 @@ const mimeTypes = {
 };
 
 function safeResolve(base, target) {
-  const resolvedPath = path.normalize(path.join(base, target));
-  if (!resolvedPath.startsWith(base)) return null;
-  return resolvedPath;
+  try {
+    const cleaned = decodeURIComponent(String(target || ''))
+      .replace(/^\\+/, '')
+      .replace(/^\/+/, '')
+      .replace(/^(?:\.{2}[\/\\])+/, '');
+    const resolvedPath = path.normalize(path.join(base, cleaned));
+    if (!resolvedPath.startsWith(base)) return null;
+    return resolvedPath;
+  } catch (_) {
+    return null;
+  }
 }
 
 function serveFile(filePath, res, statusCode = 200) {
