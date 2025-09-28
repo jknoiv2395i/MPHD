@@ -47,13 +47,8 @@
   }
 
   function getHostDocument(){
-    try {
-      if (window.parent && window.parent !== window && window.parent.document) {
-        // same-origin only; will throw if not
-        void window.parent.document.body; // access to trigger potential security error
-        return window.parent.document;
-      }
-    } catch (_) {}
+    // Always use the current document to avoid injecting into editor/parent frames
+    // Injecting into parent can place the toolbar outside the preview area or behind the editor UI
     return document;
   }
 
