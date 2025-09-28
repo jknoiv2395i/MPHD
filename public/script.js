@@ -111,7 +111,8 @@
     } catch (_) {}
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  // Create toolbar immediately if DOM is ready
+  function initializeToolbar() {
     const wasActive = sessionStorage.getItem('visual-change-active') === '1';
 
     injectStyles();
@@ -139,7 +140,7 @@
       if (getHostDocument().getElementById('visual-change-toolbar') || checks > 20) {
         clearInterval(interval);
       }
-    }, 1500);
+    }, 500);
 
     // Persistent watcher to re-add toolbar if removed or hidden
     try {
@@ -154,5 +155,15 @@
       });
       observer.observe(hostDoc.body || document.body, { childList: true, subtree: true });
     } catch (_) {}
-  });
+  }
+
+  // Initialize immediately if DOM is ready, otherwise wait
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeToolbar);
+  } else {
+    initializeToolbar();
+  }
+
+  // Also try to initialize after a short delay as backup
+  setTimeout(initializeToolbar, 100);
 })();
