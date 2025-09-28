@@ -47,13 +47,8 @@
   }
 
   function getHostDocument(){
-    try {
-      if (window.parent && window.parent !== window && window.parent.document) {
-        // same-origin only; will throw if not
-        void window.parent.document.body; // access to trigger potential security error
-        return window.parent.document;
-      }
-    } catch (_) {}
+    // Always use the current document to avoid injecting into editor/parent frames
+    // Injecting into parent can place the toolbar outside the preview area or behind the editor UI
     return document;
   }
 
@@ -135,9 +130,9 @@
     const wasActive = sessionStorage.getItem('visual-change-active') === '1';
 
     injectStyles();
-    createToolbar();
-
-    if (wasActive || isEditMode()) {
+    const shouldShow = wasActive || isEditMode();
+    if (shouldShow) {
+      createToolbar();
       document.body.classList.add('visual-change-on');
       sessionStorage.setItem('visual-change-active', '1');
     }
@@ -145,35 +140,42 @@
     window.addEventListener('keydown', (e) => {
       if ((e.key === 'e' || e.key === 'E') && (e.ctrlKey || e.metaKey)) {
         e.preventDefault();
+        const hostDoc = getHostDocument();
+        const exists = !!hostDoc.getElementById('visual-change-toolbar');
+        if (!exists) {
+          createToolbar();
+        }
         document.body.classList.toggle('visual-change-on');
         const on = document.body.classList.contains('visual-change-on');
         sessionStorage.setItem('visual-change-active', on ? '1' : '0');
       }
     });
 
-    // Guard against environments that remove dynamically inserted nodes
-    let checks = 0;
-    const interval = setInterval(() => {
-      checks++;
-      ensureToolbarVisible();
-      if (getHostDocument().getElementById('visual-change-toolbar') || checks > 20) {
-        clearInterval(interval);
-      }
-    }, 500);
-
-    // Persistent watcher to re-add toolbar if removed or hidden
-    try {
-      const hostDoc = getHostDocument();
-      const observer = new MutationObserver(() => {
-        const el = hostDoc.getElementById('visual-change-toolbar');
-        if (!el) {
-          createToolbar();
-        } else if (getComputedStyle(el).display === 'none') {
-          el.style.display = 'block';
+    if (shouldShow) {
+      // Guard against environments that remove dynamically inserted nodes
+      let checks = 0;
+      const interval = setInterval(() => {
+        checks++;
+        ensureToolbarVisible();
+        if (getHostDocument().getElementById('visual-change-toolbar') || checks > 20) {
+          clearInterval(interval);
         }
-      });
-      observer.observe(hostDoc.body || document.body, { childList: true, subtree: true });
-    } catch (_) {}
+      }, 500);
+
+      // Persistent watcher to re-add toolbar if removed or hidden
+      try {
+        const hostDoc = getHostDocument();
+        const observer = new MutationObserver(() => {
+          const el = hostDoc.getElementById('visual-change-toolbar');
+          if (!el) {
+            createToolbar();
+          } else if (getComputedStyle(el).display === 'none') {
+            el.style.display = 'block';
+          }
+        });
+        observer.observe(hostDoc.body || document.body, { childList: true, subtree: true });
+      } catch (_) {}
+    }
   }
 
   // Initialize immediately if DOM is ready, otherwise wait

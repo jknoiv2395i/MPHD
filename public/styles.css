@@ -210,7 +210,7 @@ body {
 /* About Section */
 .about-section {
   background: #fff;
-  padding: 122px 0;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -221,13 +221,15 @@ body {
   max-width: 1200px;
   padding: 0 24px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .about-title {
   font-family: 'Instrument Sans', sans-serif;
-  font-size: 54px;
+  font-size: 48px;
   font-weight: 400;
-  line-height: 1;
+  line-height: 48px;
   letter-spacing: -1.6px;
   color: #000;
   margin-bottom: 32px;
@@ -243,7 +245,7 @@ body {
   line-height: 1.65;
   letter-spacing: 0.36px;
   color: #5d5d5d;
-  max-width: 590px;
+  max-width: 561px;
   margin: 0 auto;
 }
 
@@ -622,7 +624,7 @@ body {
 /* Properties Section */
 .properties-section {
   background: #fff;
-  padding: 96px 0;
+  padding: 35px 0 96px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1300,7 +1302,7 @@ body {
 }
 
 /* Projects Showcase (converted from JSX) */
-.projects-showcase{background:#fff;padding:96px 0 0}
+.projects-showcase{background:#fff;padding:27px 0 45px}
 .projects-container{max-width:1280px;margin:0 auto;padding:0 32px;width:100%}
 .project-grid-link{display:grid;align-items:flex-start;gap:32px;grid-template-columns:repeat(12,minmax(0px,1fr));text-decoration:none;color:inherit}
 .project-item{font-weight:400}
