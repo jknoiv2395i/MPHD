@@ -136,10 +136,10 @@ body {
 .hero-subtitle {
   font-size: 19px;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 28px;
   color: var(--text-secondary);
-  margin-bottom: 40px;
-  max-width: 306px;
+  margin: 0 auto 40px;
+  max-width: 590px;
 }
 
 .get-started-button {
