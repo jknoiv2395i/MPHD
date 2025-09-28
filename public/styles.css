@@ -1497,6 +1497,266 @@ body {
     width: 36px;
     height: 36px;
   }
+}
+
+/* Footer Styles */
+.site-footer {
+  background: #131313;
+  padding: 80px 0;
+  color: #fff;
+}
+
+.footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 448px 1fr;
+  gap: 80px;
+  margin-bottom: 60px;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.footer-brand-logo {
+  margin-bottom: 86px;
+}
+
+.footer-logo {
+  width: 375px;
+  height: 375px;
+  object-fit: contain;
+  margin-left: -68px;
+  margin-top: -158px;
+}
+
+.footer-brand-description {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 29px;
+  color: #B7B7B7;
+  margin: 0;
+  max-width: 392px;
+}
+
+.footer-navigation {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 64px;
+}
+
+.footer-nav-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-nav-heading {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 32px 0;
+}
+
+.footer-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.footer-nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-nav-link:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 32px;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 495px;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-heading {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #989898;
+  margin: 0;
+}
+
+.contact-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #989898;
+  margin: 0;
+}
+
+/* Responsive Design for Footer */
+@media (max-width: 1200px) {
+  .footer-container {
+    padding: 0 48px;
+  }
+
+  .footer-content {
+    grid-template-columns: 400px 1fr;
+    gap: 60px;
+  }
+
+  .footer-logo {
+    width: 300px;
+    height: 300px;
+    margin-left: -50px;
+    margin-top: -120px;
+  }
+
+  .footer-navigation {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 968px) {
+  .site-footer {
+    padding: 60px 0;
+  }
+
+  .footer-container {
+    padding: 0 24px;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .footer-brand {
+    text-align: center;
+  }
+
+  .footer-logo {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+  }
+
+  .footer-brand-logo {
+    margin-bottom: 24px;
+  }
+
+  .footer-navigation {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 40px 0;
+  }
+
+  .footer-container {
+    padding: 0 16px;
+  }
+
+  .footer-content {
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+
+  .footer-logo {
+    width: 200px;
+    height: 200px;
+  }
+
+  .footer-brand-description {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .footer-navigation {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .footer-contact {
+    gap: 24px;
+  }
+
+  .contact-heading {
+    font-size: 15px;
+  }
+
+  .contact-text {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-logo {
+    width: 150px;
+    height: 150px;
+  }
+
+  .footer-brand-description {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .footer-nav-heading {
+    font-size: 10px;
+    margin-bottom: 16px;
+  }
+
+  .footer-nav-link {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .contact-heading {
+    font-size: 14px;
+  }
+
+  .contact-text {
+    font-size: 14px;
+    line-height: 22px;
+  }
 
   .consultation-button-icon svg {
     width: 16px;
