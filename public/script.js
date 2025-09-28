@@ -5,12 +5,12 @@
 
       // Query param checks (common editor flags)
       if (params.has('edit') || params.get('edit') === '1') return true;
-      const editorFlags = ['builder', 'builder.edit', 'editor', 'editMode', '_edit'];
+      const editorFlags = ['builder', 'builder.edit', 'builder.preview', 'builder.mode', 'editor', 'editMode', '_edit', 'preview'];
       for (const f of editorFlags) if (params.has(f)) return true;
 
       // Check hash and pathname for editor hints
-      if (window.location.hash && /builder|editor/.test(window.location.hash)) return true;
-      if (window.location.pathname && /builder|editor/.test(window.location.pathname)) return true;
+      if (window.location.hash && /builder|editor|preview|visual/i.test(window.location.hash)) return true;
+      if (window.location.pathname && /builder|editor/i.test(window.location.pathname)) return true;
 
       // Session storage toggle (manual/legacy)
       if (sessionStorage.getItem('edit-mode') === '1') return true;
@@ -20,27 +20,19 @@
         if (window.__BUILDER__ || window.builder || window.Builder) return true;
       } catch (e) {}
 
-      // If loaded inside an editor iframe, try to infer from referrer or parent location
-      if (window.self !== window.top) {
-        // Prefer attempting to read parent location when same-origin
-        try {
-          const parentHref = window.parent.location && window.parent.location.href;
-          if (parentHref && /builder|editor|localhos?t|localhost:\d+/.test(parentHref)) return true;
-        } catch (e) {
-          // cross-origin access to parent may fail; fall back to other heuristics
-        }
-        if (document.referrer && /builder\.io|builder|editor/.test(document.referrer)) return true;
+      // Treat any iframe context as edit/preview to ensure the toolbar is available
+      if (window.self !== window.top) return true;
 
-        // Sometimes editor sets window.name or frame attributes
-        try {
-          if (window.name && /builder|editor/.test(window.name)) return true;
-          const frame = window.frameElement;
-          if (frame && frame.getAttribute) {
-            const attrs = (frame.getAttribute('id') || '') + ' ' + (frame.getAttribute('class') || '') + ' ' + (frame.getAttribute('data-testid') || '') + ' ' + (frame.getAttribute('data-builder') || '');
-            if (/builder|editor/.test(attrs)) return true;
-          }
-        } catch (e) {}
-      }
+      // Additional weak signals
+      try {
+        if (document.referrer && /builder\.io|builder|editor|preview/i.test(document.referrer)) return true;
+        if (window.name && /builder|editor|preview/i.test(window.name)) return true;
+        const frame = window.frameElement;
+        if (frame && frame.getAttribute) {
+          const attrs = ((frame.getAttribute('id') || '') + ' ' + (frame.getAttribute('class') || '') + ' ' + (frame.getAttribute('data-testid') || '') + ' ' + (frame.getAttribute('data-builder') || '')).toLowerCase();
+          if (/builder|editor|preview/.test(attrs)) return true;
+        }
+      } catch (e) {}
 
       return false;
     } catch (_) { return false; }
