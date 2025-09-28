@@ -185,4 +185,42 @@
 
   // Also try to initialize after a short delay as backup
   setTimeout(initializeToolbar, 100);
+  // Contact form helpers
+  function initContactForm(){
+    try{
+      const form = document.getElementById('contact-form');
+      const textarea = document.getElementById('projectInfo');
+      const counter = document.getElementById('projectInfo-count');
+      if(textarea && counter){
+        const update = () => {
+          const max = Number(textarea.getAttribute('maxlength')) || 1000;
+          const len = textarea.value.length || 0;
+          counter.textContent = `${len}/${max}`;
+        };
+        textarea.addEventListener('input', update);
+        update();
+      }
+      if(form){
+        form.addEventListener('submit', (e)=>{
+          const fullName = document.getElementById('fullName');
+          const phone = document.getElementById('phone');
+          const email = document.getElementById('email');
+          let ok = true;
+          if(fullName && !fullName.value.trim()) ok = false;
+          if(phone && !/^\+?[0-9\s-]{10,}$/.test(phone.value.trim())) ok = false;
+          if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) ok = false;
+          if(!ok){
+            e.preventDefault();
+            try{ alert('Please complete the required fields with valid details.'); }catch(_){ }
+          }
+        });
+      }
+    }catch(_){ }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initContactForm);
+  } else {
+    initContactForm();
+  }
 })();
