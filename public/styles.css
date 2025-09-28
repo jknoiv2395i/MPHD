@@ -386,17 +386,22 @@ body {
 
   .about-section {
     padding: 40px 0;
+    min-height: 300px;
+  }
+
+  .about-container {
+    padding: 0 16px;
   }
 
   .about-title {
     font-size: 32px;
-    line-height: 1.1;
+    line-height: 36px;
     letter-spacing: -1px;
   }
 
   .about-subtitle {
     font-size: 15px;
-    line-height: 1.6;
+    line-height: 24px;
   }
 }
 
