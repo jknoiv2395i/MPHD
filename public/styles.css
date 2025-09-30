@@ -142,6 +142,17 @@ body {
   max-width: 590px;
 }
 
+.hero-subtitle-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.hero-subtitle-link:hover,
+.hero-subtitle-link:focus {
+  text-decoration: underline;
+}
+
 .get-started-button {
   display: flex;
   align-items: center;
