@@ -122,12 +122,17 @@
     const wasActive = sessionStorage.getItem('visual-change-active') === '1';
 
     injectStyles();
-    const shouldShow = wasActive || isEditMode();
-    if (shouldShow) {
-      createToolbar();
+    createToolbar();
+
+    const shouldHighlight = wasActive || isEditMode();
+    if (shouldHighlight) {
       document.body.classList.add('visual-change-on');
       sessionStorage.setItem('visual-change-active', '1');
+    } else {
+      sessionStorage.setItem('visual-change-active', '0');
     }
+
+    ensureToolbarVisible();
 
     window.addEventListener('keydown', (e) => {
       if ((e.key === 'e' || e.key === 'E') && (e.ctrlKey || e.metaKey)) {
@@ -143,31 +148,30 @@
       }
     });
 
-    if (shouldShow) {
-      // Guard against environments that remove dynamically inserted nodes
-      let checks = 0;
-      const interval = setInterval(() => {
-        checks++;
-        ensureToolbarVisible();
-        if (getHostDocument().getElementById('visual-change-toolbar') || checks > 20) {
-          clearInterval(interval);
-        }
-      }, 500);
+    // Guard against environments that remove dynamically inserted nodes
+    let checks = 0;
+    const interval = setInterval(() => {
+      checks++;
+      ensureToolbarVisible();
+      if (getHostDocument().getElementById('visual-change-toolbar') || checks > 20) {
+        clearInterval(interval);
+      }
+    }, 500);
 
-      // Persistent watcher to re-add toolbar if removed or hidden
-      try {
-        const hostDoc = getHostDocument();
-        const observer = new MutationObserver(() => {
-          const el = hostDoc.getElementById('visual-change-toolbar');
-          if (!el) {
-            createToolbar();
-          } else if (getComputedStyle(el).display === 'none') {
-            el.style.display = 'block';
-          }
-        });
-        observer.observe(hostDoc.body || document.body, { childList: true, subtree: true });
-      } catch (_) {}
-    }
+    // Persistent watcher to re-add toolbar if removed or hidden
+    try {
+      const hostDoc = getHostDocument();
+      const observer = new MutationObserver(() => {
+        const el = hostDoc.getElementById('visual-change-toolbar');
+        if (!el) {
+          createToolbar();
+          ensureToolbarVisible();
+        } else if (getComputedStyle(el).display === 'none') {
+          el.style.display = 'block';
+        }
+      });
+      observer.observe(hostDoc.body || document.body, { childList: true, subtree: true });
+    } catch (_) {}
   }
 
   // Initialize immediately if DOM is ready, otherwise wait
