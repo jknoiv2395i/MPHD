@@ -331,6 +331,8 @@
   max-width: 1152px;
   margin: 0 auto;
   padding: 0 32px;
+  display: flex;
+  flex-direction: column;
 }
 
 .drives-us-content {
@@ -347,6 +349,26 @@
   line-height: 28px;
   color: #4B5563;
   margin: 0;
+}
+
+/* New layout for Drives Us */
+.drives-us-kicker {
+  color: #4B5563;
+  font-family: 'Inter', sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 28px;
+  margin: -1px -3px 0 139px;
+}
+
+.drives-us-description {
+  color: #000;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 36px;
+  max-width: 920px;
+  margin: 0 auto 32px;
 }
 
 .drives-us-title {
