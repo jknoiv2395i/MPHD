@@ -38,13 +38,13 @@ body {
 }
 
 .header-container {
-  max-width: 1920px;
-  margin: 0 auto;
+  max-width: 2278px;
+  margin: -4px auto 0;
   padding: 16px 96px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 79px;
+  height: 94px;
   background: transparent;
 }
 
@@ -59,6 +59,7 @@ body {
   display: flex;
   align-items: center;
   gap: 48px;
+  margin-left: 200px;
 }
 
 .nav-link {
@@ -86,6 +87,7 @@ body {
   font-size: 15px;
   font-weight: 500;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-left: 200px;
 }
 
 .contact-button:hover {
@@ -101,7 +103,7 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  padding-top: 79px;
+  padding-top: 94px;
   background: url("https://cdn.builder.io/api/v1/image/assets%2F4a6014b4768048a0b283ecc7c1986908%2F8a3970f6b7ff420597d7cdae5a16f6ea") center/cover no-repeat;
 }
 
@@ -113,7 +115,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 80px;
-  min-height: max(967px, calc(100vh - 79px));
+  min-height: max(967px, calc(100vh - 94px));
 }
 
 .hero-content {
@@ -291,10 +293,17 @@ body {
 @media (max-width: 968px) {
   .header-container {
     padding: 16px 24px;
+    margin: 0 auto;
+    height: 79px;
   }
 
   .main-nav {
     gap: 32px;
+    margin-left: 0;
+  }
+
+  .contact-button {
+    margin-left: 0;
   }
 
   .hero-container {
