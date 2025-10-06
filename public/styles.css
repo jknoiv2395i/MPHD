@@ -653,6 +653,229 @@ body {
   }
 }
 
+/* Testimonials Marquee Section */
+.testimonials-marquee-section {
+  background: #fff;
+  padding: 80px 0;
+}
+
+.testimonials-marquee-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.testimonials-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.testimonials-badge {
+  border: 1px solid #e5e7eb;
+  padding: 6px 16px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #131313;
+}
+
+.testimonials-title {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -1.2px;
+  color: #000;
+  margin: 0;
+}
+
+.testimonials-description {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #5d5d5d;
+  margin: 0;
+}
+
+.testimonials-columns-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 40px;
+  max-height: 740px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 100%);
+}
+
+.testimonials-column {
+  display: flex;
+  width: 100%;
+  max-width: 320px;
+}
+
+.testimonials-column-md,
+.testimonials-column-lg {
+  display: none;
+}
+
+.testimonials-track {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 24px;
+  animation: testimonials-scroll 16s linear infinite;
+  will-change: transform;
+  background: #fff;
+}
+
+.scroll-speed-fast {
+  animation-duration: 15s;
+}
+
+.scroll-speed-medium {
+  animation-duration: 19s;
+}
+
+.scroll-speed-slow {
+  animation-duration: 17s;
+}
+
+.testimonial-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1), 0 4px 6px -4px rgba(37, 99, 235, 0.1);
+  padding: 40px;
+  max-width: 320px;
+  width: 100%;
+}
+
+.testimonial-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #131313;
+  margin: 0;
+}
+
+.testimonial-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.testimonial-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.testimonial-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.testimonial-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #131313;
+}
+
+.testimonial-role {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+  color: #131313;
+  opacity: 0.6;
+}
+
+@keyframes testimonials-scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials-marquee-section {
+    padding: 60px 0;
+  }
+
+  .testimonials-title {
+    font-size: 36px;
+    letter-spacing: -1px;
+  }
+
+  .testimonials-description {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .testimonials-columns-wrapper {
+    gap: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .testimonials-marquee-container {
+    padding: 0 32px;
+  }
+
+  .testimonials-column-md {
+    display: flex;
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonials-marquee-section {
+    padding: 80px 0 96px;
+  }
+
+  .testimonials-title {
+    font-size: 48px;
+  }
+
+  .testimonials-column-lg {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonials-marquee-container {
+    padding: 0 16px;
+  }
+
+  .testimonials-title {
+    font-size: 30px;
+  }
+
+  .testimonials-description {
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .testimonial-card {
+    padding: 32px 24px;
+  }
+}
+
 /* Properties Section */
 .properties-section {
   background: #fff;
