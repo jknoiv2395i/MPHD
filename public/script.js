@@ -45,144 +45,16 @@
   }
 
   function injectStyles(){
-    const hostDoc = getHostDocument();
-    if (hostDoc.getElementById('visual-change-styles')) return;
-    const css = `
-      .visual-change-toolbar{position:fixed !important;top:96px !important;right:16px !important;z-index:2147483647 !important;pointer-events:auto !important;display:block !important;visibility:visible !important;opacity:1 !important}
-      .visual-change-button{display:inline-flex !important;align-items:center !important;justify-content:center !important;padding:9px 16px !important;background:#fff !important;color:#111827 !important;border-radius:9999px !important;border:1px solid rgba(0,0,0,0.08) !important;font-family:'Inter',sans-serif !important;font-size:14px !important;font-weight:500 !important;cursor:pointer !important;box-shadow:0 4px 12px rgba(0,0,0,0.06) !important;transition:transform .2s ease, box-shadow .2s ease !important;min-width:120px !important;white-space:nowrap !important}
-      .visual-change-button:hover{transform:translateY(-1px) !important;box-shadow:0 6px 16px rgba(0,0,0,0.08) !important}
-      body.visual-change-on :where(h1,h2,h3,h4,h5,h6,p,a,section,div,article,figure,img,button){outline:1px dashed rgba(7,24,57,.6) !important;outline-offset:2px !important;cursor:crosshair !important}
-    `;
-    const style = hostDoc.createElement('style');
-    style.id = 'visual-change-styles';
-    style.textContent = css;
-    hostDoc.head.appendChild(style);
+    // Visual change styles removed — toolbar disabled per user request
+    return;
   }
 
-  function createToolbar(){
-    const hostDoc = getHostDocument();
+  // Visual-change toolbar creation and lifecycle has been removed.
+  // Keyboard shortcuts and automatic injection are disabled to prevent the button from appearing.
 
-    // Remove existing toolbar if present
-    const existing = hostDoc.getElementById('visual-change-toolbar');
-    if (existing) {
-      existing.remove();
-    }
+  // (Toolbar-related functionality intentionally omitted)
 
-    const toolbar = hostDoc.createElement('div');
-    toolbar.className = 'visual-change-toolbar';
-    toolbar.id = 'visual-change-toolbar';
-
-    // Force visibility with inline styles as backup
-    toolbar.style.cssText = 'position: fixed !important; top: 96px !important; right: 16px !important; z-index: 2147483647 !important; pointer-events: auto !important; display: block !important; visibility: visible !important; opacity: 1 !important;';
-
-    const btn = hostDoc.createElement('button');
-    btn.type = 'button';
-    btn.className = 'visual-change-button';
-    btn.setAttribute('aria-label', 'Visual changes');
-    btn.textContent = 'Visual changes';
-
-    // Force button visibility with inline styles as backup
-    btn.style.cssText = 'display: inline-flex !important; align-items: center !important; justify-content: center !important; padding: 9px 16px !important; background: #fff !important; color: #111827 !important; border-radius: 9999px !important; border: 1px solid rgba(0,0,0,0.08) !important; font-family: Inter, sans-serif !important; font-size: 14px !important; font-weight: 500 !important; cursor: pointer !important; box-shadow: 0 4px 12px rgba(0,0,0,0.06) !important; min-width: 120px !important; white-space: nowrap !important;';
-
-    btn.addEventListener('click', () => {
-      document.body.classList.toggle('visual-change-on');
-      const on = document.body.classList.contains('visual-change-on');
-      sessionStorage.setItem('visual-change-active', on ? '1' : '0');
-    });
-
-    toolbar.appendChild(btn);
-
-    try {
-      hostDoc.body.appendChild(toolbar);
-      console.log('Visual changes toolbar created successfully');
-    } catch (e) {
-      try {
-        document.body.appendChild(toolbar);
-        console.log('Visual changes toolbar created successfully (fallback)');
-      } catch (e2) {
-        console.error('Failed to create visual changes toolbar:', e2);
-      }
-    }
-  }
-
-  function ensureToolbarVisible(){
-    try { createToolbar(); } catch (_) {}
-    try {
-      const hostDoc = getHostDocument();
-      const el = hostDoc.getElementById('visual-change-toolbar');
-      if (el) {
-        el.style.display = 'block';
-        el.style.pointerEvents = 'auto';
-      }
-    } catch (_) {}
-  }
-
-  // Create toolbar immediately if DOM is ready
-  function initializeToolbar() {
-    const wasActive = sessionStorage.getItem('visual-change-active') === '1';
-
-    injectStyles();
-    createToolbar();
-
-    const shouldHighlight = wasActive || isEditMode();
-    if (shouldHighlight) {
-      document.body.classList.add('visual-change-on');
-      sessionStorage.setItem('visual-change-active', '1');
-    } else {
-      sessionStorage.setItem('visual-change-active', '0');
-    }
-
-    ensureToolbarVisible();
-
-    window.addEventListener('keydown', (e) => {
-      if ((e.key === 'e' || e.key === 'E') && (e.ctrlKey || e.metaKey)) {
-        e.preventDefault();
-        const hostDoc = getHostDocument();
-        const exists = !!hostDoc.getElementById('visual-change-toolbar');
-        if (!exists) {
-          createToolbar();
-        }
-        document.body.classList.toggle('visual-change-on');
-        const on = document.body.classList.contains('visual-change-on');
-        sessionStorage.setItem('visual-change-active', on ? '1' : '0');
-      }
-    });
-
-    // Guard against environments that remove dynamically inserted nodes
-    let checks = 0;
-    const interval = setInterval(() => {
-      checks++;
-      ensureToolbarVisible();
-      if (getHostDocument().getElementById('visual-change-toolbar') || checks > 20) {
-        clearInterval(interval);
-      }
-    }, 500);
-
-    // Persistent watcher to re-add toolbar if removed or hidden
-    try {
-      const hostDoc = getHostDocument();
-      const observer = new MutationObserver(() => {
-        const el = hostDoc.getElementById('visual-change-toolbar');
-        if (!el) {
-          createToolbar();
-          ensureToolbarVisible();
-        } else if (getComputedStyle(el).display === 'none') {
-          el.style.display = 'block';
-        }
-      });
-      observer.observe(hostDoc.body || document.body, { childList: true, subtree: true });
-    } catch (_) {}
-  }
-
-  // Initialize immediately if DOM is ready, otherwise wait
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeToolbar);
-  } else {
-    initializeToolbar();
-  }
-
-  // Also try to initialize after a short delay as backup
-  setTimeout(initializeToolbar, 100);
+  // Continue with remaining helpers below
   // Contact form helpers
   function initContactForm(){
     try{
