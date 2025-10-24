@@ -49,11 +49,6 @@
     return;
   }
 
-  // Visual-change toolbar creation and lifecycle has been removed.
-  // Keyboard shortcuts and automatic injection are disabled to prevent the button from appearing.
-
-  // (Toolbar-related functionality intentionally omitted)
-
   // Continue with remaining helpers below
   // Contact form helpers
   function initContactForm(){
@@ -92,5 +87,47 @@
     document.addEventListener('DOMContentLoaded', initContactForm);
   } else {
     initContactForm();
+  }
+
+  // Scroll-triggered animations using Intersection Observer
+  function initScrollAnimations(){
+    try {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Mark all elements for animation and observe them
+      const elementsToAnimate = document.querySelectorAll('.section-animate, .card-animate');
+      elementsToAnimate.forEach(element => {
+        element.setAttribute('data-animate', 'true');
+        observer.observe(element);
+      });
+
+      // Trigger animation for elements already in viewport on load
+      setTimeout(() => {
+        elementsToAnimate.forEach(element => {
+          const rect = element.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            element.classList.add('in-view');
+          }
+        });
+      }, 100);
+    } catch(_) { }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollAnimations);
+  } else {
+    initScrollAnimations();
   }
 })();
