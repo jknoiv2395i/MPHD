@@ -238,50 +238,76 @@ body {
 
 /* Scroll-triggered animations for sections and cards */
 .section-animate {
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .section-animate.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Initial state for animation - hidden until in-view */
+.section-animate[data-animate="true"] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: none;
+}
+
+.section-animate[data-animate="true"].in-view {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .card-animate {
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .card-animate.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Initial state for animation - hidden until in-view */
+.card-animate[data-animate="true"] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: none;
+}
+
+.card-animate[data-animate="true"].in-view {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 /* Staggered animations for cards */
-.card-animate:nth-child(2).in-view {
+.card-animate[data-animate="true"]:nth-child(2).in-view {
   transition-delay: 0.1s;
 }
 
-.card-animate:nth-child(3).in-view {
+.card-animate[data-animate="true"]:nth-child(3).in-view {
   transition-delay: 0.2s;
 }
 
-.card-animate:nth-child(4).in-view {
+.card-animate[data-animate="true"]:nth-child(4).in-view {
   transition-delay: 0.3s;
 }
 
-.card-animate:nth-child(5).in-view {
+.card-animate[data-animate="true"]:nth-child(5).in-view {
   transition-delay: 0.4s;
 }
 
 /* Additional stagger for larger grids */
-.card-animate:nth-child(6).in-view {
+.card-animate[data-animate="true"]:nth-child(6).in-view {
   transition-delay: 0.5s;
 }
 
-.card-animate:nth-child(n+7).in-view {
+.card-animate[data-animate="true"]:nth-child(n+7).in-view {
   transition-delay: 0.6s;
 }
 

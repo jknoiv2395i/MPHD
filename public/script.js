@@ -106,11 +106,22 @@
         });
       }, observerOptions);
 
-      // Observe all elements with animation classes
+      // Mark all elements for animation and observe them
       const elementsToAnimate = document.querySelectorAll('.section-animate, .card-animate');
       elementsToAnimate.forEach(element => {
+        element.setAttribute('data-animate', 'true');
         observer.observe(element);
       });
+
+      // Trigger animation for elements already in viewport on load
+      setTimeout(() => {
+        elementsToAnimate.forEach(element => {
+          const rect = element.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            element.classList.add('in-view');
+          }
+        });
+      }, 100);
     } catch(_) { }
   }
 
