@@ -45,14 +45,89 @@
   }
 
   function injectStyles(){
-    // Visual change styles removed — toolbar disabled per user request
-    return;
+    const style = document.createElement('style');
+    style.textContent = `
+      #visual-change-toolbar {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 10000;
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 12px 16px;
+        box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      }
+      #visual-change-toolbar button {
+        background: #3b82f6;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      #visual-change-toolbar button:hover {
+        background: #2563eb;
+      }
+      #visual-change-toolbar .toolbar-label {
+        display: block;
+        font-size: 12px;
+        color: #6b7280;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+    `;
+    getHostDocument().head.appendChild(style);
   }
 
-  // Visual-change toolbar creation and lifecycle has been removed.
-  // Keyboard shortcuts and automatic injection are disabled to prevent the button from appearing.
+  function createToolbar(){
+    const doc = getHostDocument();
+    if (doc.getElementById('visual-change-toolbar')) return;
 
-  // (Toolbar-related functionality intentionally omitted)
+    const toolbar = document.createElement('div');
+    toolbar.id = 'visual-change-toolbar';
+    toolbar.innerHTML = `
+      <span class="toolbar-label">Edit Mode</span>
+      <button type="button" id="visual-change-btn">Visual Changes</button>
+    `;
+    doc.body.appendChild(toolbar);
+
+    const btn = doc.getElementById('visual-change-btn');
+    if (btn) {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('Visual editing mode enabled. Use this interface to make visual changes to your website.');
+      });
+    }
+  }
+
+  function initToolbar(){
+    if (!isEditMode()) return;
+    injectStyles();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', createToolbar);
+    } else {
+      createToolbar();
+    }
+  }
+
+  // Keyboard shortcut to toggle toolbar visibility
+  document.addEventListener('keydown', (e) => {
+    if (isEditMode() && e.ctrlKey && e.shiftKey && e.key === 'E') {
+      e.preventDefault();
+      const toolbar = document.getElementById('visual-change-toolbar');
+      if (toolbar) {
+        toolbar.style.display = toolbar.style.display === 'none' ? 'block' : 'none';
+      }
+    }
+  });
+
+  // Initialize toolbar on load
+  initToolbar();
 
   // Continue with remaining helpers below
   // Contact form helpers
