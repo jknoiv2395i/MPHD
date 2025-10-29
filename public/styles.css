@@ -67,7 +67,6 @@ body {
   text-decoration: none;
   font-size: 15px;
   font-weight: 400;
-  transition: color 0.2s ease;
   cursor: pointer;
 }
 
@@ -86,12 +85,10 @@ body {
   border-radius: 9999px;
   font-size: 15px;
   font-weight: 500;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
   margin-left: 200px;
 }
 
 .contact-button:hover {
-  transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
 }
 
@@ -134,9 +131,8 @@ body {
   line-height: 1;
   color: var(--text-primary);
   margin-bottom: 24px;
-  opacity: 0;
-  transform: translateY(16px);
-  animation: fade-slide-up 0.8s ease-out 0.2s forwards;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .hero-subtitle {
@@ -146,9 +142,8 @@ body {
   color: var(--text-secondary);
   margin: 0 auto 40px;
   max-width: 590px;
-  opacity: 0;
-  transform: translateY(16px);
-  animation: fade-slide-up 0.8s ease-out 0.4s forwards;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .get-started-button {
@@ -163,14 +158,11 @@ body {
   font-size: 15px;
   font-weight: 500;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  opacity: 0;
-  transform: translateY(16px);
-  animation: fade-slide-up 0.8s ease-out 0.6s forwards;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .get-started-button:hover {
-  transform: translateY(-2px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
@@ -186,7 +178,6 @@ body {
   height: 24px;
   background: var(--button-icon-bg);
   border-radius: 50%;
-  transition: transform 0.2s ease;
 }
 
 .hero-image {
@@ -215,8 +206,8 @@ body {
 /* Logo Marquee */
 .logo-strip{background:#fff;padding:16px 0;overflow:hidden}
 .marquee{width:100%;overflow:hidden}
-.marquee-track{display:flex;align-items:center;gap:40px;width:max-content;animation:marquee-left 30s linear infinite;will-change:transform}
-.logo-img{display:block;object-fit:contain;opacity:.9;transition:opacity .2s ease}
+.marquee-track{display:flex;align-items:center;gap:40px;width:max-content}
+.logo-img{display:block;object-fit:contain;opacity:.9}
 .logo-img:hover{opacity:1}
 .logo-h36{height:36px}
 .logo-h40{height:40px}
@@ -224,23 +215,10 @@ body {
 .logo-h48{height:48px}
 @keyframes marquee-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* Hero animations - fade-in and slide-up effect */
-@keyframes fade-slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Scroll-triggered animations for sections and cards */
 .section-animate {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .section-animate.in-view {
@@ -248,67 +226,14 @@ body {
   transform: translateY(0);
 }
 
-/* Initial state for animation - hidden until in-view */
-.section-animate[data-animate="true"] {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: none;
-}
-
-.section-animate[data-animate="true"].in-view {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
 .card-animate {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .card-animate.in-view {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Initial state for animation - hidden until in-view */
-.card-animate[data-animate="true"] {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: none;
-}
-
-.card-animate[data-animate="true"].in-view {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-/* Staggered animations for cards */
-.card-animate[data-animate="true"]:nth-child(2).in-view {
-  transition-delay: 0.1s;
-}
-
-.card-animate[data-animate="true"]:nth-child(3).in-view {
-  transition-delay: 0.2s;
-}
-
-.card-animate[data-animate="true"]:nth-child(4).in-view {
-  transition-delay: 0.3s;
-}
-
-.card-animate[data-animate="true"]:nth-child(5).in-view {
-  transition-delay: 0.4s;
-}
-
-/* Additional stagger for larger grids */
-.card-animate[data-animate="true"]:nth-child(6).in-view {
-  transition-delay: 0.5s;
-}
-
-.card-animate[data-animate="true"]:nth-child(n+7).in-view {
-  transition-delay: 0.6s;
 }
 
 /* About Section */
@@ -571,12 +496,10 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   cursor: pointer;
 }
 
 .service-area-card:hover {
-  transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(37, 99, 235, 0.1);
   border-color: #2563EB;
 }
@@ -832,21 +755,16 @@ body {
   flex-direction: column;
   gap: 24px;
   padding-bottom: 24px;
-  animation: testimonials-scroll 16s linear infinite;
-  will-change: transform;
   background: #fff;
 }
 
 .scroll-speed-fast {
-  animation-duration: 15s;
 }
 
 .scroll-speed-medium {
-  animation-duration: 19s;
 }
 
 .scroll-speed-slow {
-  animation-duration: 17s;
 }
 
 .testimonial-card {
@@ -905,14 +823,6 @@ body {
   opacity: 0.6;
 }
 
-@keyframes testimonials-scroll {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-50%);
-  }
-}
 
 @media (max-width: 768px) {
   .testimonials-marquee-section {
@@ -1017,11 +927,9 @@ body {
   height: 374px;
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .property-card:hover {
-  transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(195, 213, 241, 0.3);
 }
 
@@ -1072,7 +980,6 @@ body {
   font-weight: 400;
   line-height: 28px;
   margin-top: 16px;
-  transition: color 0.2s ease;
 }
 
 .property-link:hover {
@@ -1116,7 +1023,6 @@ body {
   justify-content: center;
   align-items: center;
   white-space: nowrap;
-  transition: background-color 0.2s ease;
 }
 
 .view-all-button:hover {
@@ -1195,10 +1101,6 @@ body {
   background: #fff;
   border-radius: 18px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.blog-card:hover {
 }
 
 .featured-blog {
@@ -1228,12 +1130,6 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.blog-image:hover,
-.blog-image-container:hover .blog-image {
-  transform: scale(1.05);
 }
 
 .blog-content {
@@ -1450,11 +1346,9 @@ body {
   font-weight: 500;
   line-height: 1.6;
   margin-bottom: 48px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .learn-more-button:hover {
-  transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(19, 19, 19, 0.2);
 }
 
