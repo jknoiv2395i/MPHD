@@ -80,8 +80,8 @@ body {
   align-items: center;
   justify-content: center;
   padding: 9px 24px;
-  background: var(--button-bg);
-  color: var(--button-text);
+  background: #000;
+  color: #fff;
   text-decoration: none;
   border-radius: 9999px;
   font-size: 15px;
