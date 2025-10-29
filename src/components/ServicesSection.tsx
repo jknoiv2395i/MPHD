@@ -1,20 +1,4 @@
 import React from 'react'
-import { motion } from 'framer-motion'
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } }
-}
-
-const textAnimationVariants = {
-  hidden: { opacity: 0, y: 18 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.2, 0.8, 0.2, 1] } }
-}
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
-}
 
 export default function ServicesSection(){
   const services = [
@@ -35,35 +19,20 @@ export default function ServicesSection(){
   return (
     <section className="services-section" aria-label="Our Services">
       <div className="services-container">
-        <motion.div
-          className="services-header"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={containerVariants}
-        >
-          <motion.h2 className="services-title" variants={textAnimationVariants}>
+        <div className="services-header">
+          <h2 className="services-title">
             Our Services
-          </motion.h2>
-          <motion.p className="services-subtitle" variants={textAnimationVariants}>
+          </h2>
+          <p className="services-subtitle">
             We deliver thoughtful design and reliable execution across every project phase.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
-        <motion.div
-          className="services-grid"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.25 }}
-          variants={containerVariants}
-        >
+        <div className="services-grid">
           {services.map((s, idx) => (
-            <motion.article
+            <article
               key={s.title}
               className="service-card group"
-              variants={cardVariants}
-              whileHover={{ translateY: -6 }}
-              transition={{ type: 'spring', stiffness: 350, damping: 24 }}
             >
               <div className="service-card-inner">
                 <div className="service-icon" aria-hidden>
@@ -79,9 +48,9 @@ export default function ServicesSection(){
                   <span>Learn more</span>
                 </a>
               </div>
-            </motion.article>
+            </article>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )
