@@ -157,7 +157,7 @@ body {
   gap: 8px;
   padding: 8px 16px;
   background: var(--button-bg);
-  color: var(--button-text);
+  color: #000;
   text-decoration: none;
   border-radius: 9999px;
   font-size: 15px;
@@ -184,7 +184,7 @@ body {
   justify-content: center;
   width: 24px;
   height: 24px;
-  background: var(--button-icon-bg);
+  background: #000;
   border-radius: 50%;
   transition: transform 0.2s ease;
 }
