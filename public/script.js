@@ -89,39 +89,13 @@
     initContactForm();
   }
 
-  // Scroll-triggered animations using Intersection Observer
+  // Scroll-triggered animations disabled
   function initScrollAnimations(){
     try {
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-
-      // Mark all elements for animation and observe them
       const elementsToAnimate = document.querySelectorAll('.section-animate, .card-animate');
       elementsToAnimate.forEach(element => {
-        element.setAttribute('data-animate', 'true');
-        observer.observe(element);
+        element.classList.add('in-view');
       });
-
-      // Trigger animation for elements already in viewport on load
-      setTimeout(() => {
-        elementsToAnimate.forEach(element => {
-          const rect = element.getBoundingClientRect();
-          if (rect.top < window.innerHeight && rect.bottom > 0) {
-            element.classList.add('in-view');
-          }
-        });
-      }, 100);
     } catch(_) { }
   }
 
