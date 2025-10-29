@@ -1,11 +1,11 @@
 :root {
-  --bg-dark: #000;
+  --bg-dark: #ffffff;
   --text-primary: #fff;
   --text-secondary: rgba(255, 255, 255, 0.9);
   --text-muted: rgba(255, 255, 255, 0.8);
   --button-bg: #fff;
-  --button-text: #111827;
-  --button-icon-bg: #111827;
+  --button-text: #ffffff;
+  --button-icon-bg: #ffffff;
 }
 
 * {
@@ -345,7 +345,7 @@ body {
   font-weight: 400;
   line-height: 54px;
   letter-spacing: -1.6px;
-  color: #000;
+  color: #ffffff;
   margin-bottom: 32px;
   max-width: 811px;
   width: 100%;
@@ -358,7 +358,7 @@ body {
   font-weight: 400;
   line-height: 28px;
   letter-spacing: 0.36px;
-  color: #5d5d5d;
+  color: #ffffff;
   max-width: 590px;
   width: 100%;
   text-align: center;
@@ -537,7 +537,7 @@ body {
   font-size: 36px;
   font-weight: 400;
   line-height: 40px;
-  color: #000;
+  color: #ffffff;
   margin: 0 0 24px 0;
 }
 
@@ -546,7 +546,7 @@ body {
   font-size: 17px;
   font-weight: 400;
   line-height: 28px;
-  color: #4B5563;
+  color: #ffffff;
   margin: 0 0 64px 0;
   max-width: 826px;
   margin-left: auto;
@@ -578,7 +578,7 @@ body {
 .service-area-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(37, 99, 235, 0.1);
-  border-color: #2563EB;
+  border-color: #2564eb00;
 }
 
 .area-icon {
